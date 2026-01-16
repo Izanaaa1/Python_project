@@ -1,17 +1,23 @@
-def findSmallest(arr):
-    smallest = 1 
-    smallest_index = 0 
-    for i in range(1, len(arr)):
-        if arr[i] < smallest:
-            smallest = arr[i]
-            smallest_index = i 
-    return smallest_index
+def binary_search(arr, item):
+    low = 0 
+    high = len(arr) - 1
 
-def selectionSort(arr):
-    newArr = []
-    copiedArr = list(arr) 
-    for i in range(len(copiedArr)):
-        smallest = findSmallest(copiedArr)
-        newArr.append(copiedArr.pop(smallest))
-    return newArr
-print(selectionSort([1, 3, 5, 6, 7, 9, 4]))
+    while low <= high:
+        mid = (low + high) // 2
+        guess = arr[mid]
+        print(mid)
+        if guess == item:
+            return mid
+        elif guess > item:
+            high = mid - 1 
+        else:
+            low = mid + 1
+    return None
+
+my_list = []
+
+for i in range(0, 1_000_000):
+    my_list.append(i)
+
+
+print(binary_search(my_list, 535600)) 
